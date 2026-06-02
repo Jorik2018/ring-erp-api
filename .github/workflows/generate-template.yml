@@ -23,7 +23,7 @@ jobs:
 
       - name: Compress project
         run: |
-          zip -r leiningen-erp.zip guestbook
+          zip -r leiningen-erp.zip leiningen-erp
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
