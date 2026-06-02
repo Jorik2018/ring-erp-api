@@ -7,7 +7,6 @@ jobs:
 generate:
 runs-on: ubuntu-latest
 
-```
 steps:
   - name: Install Leiningen
     run: |
@@ -33,4 +32,3 @@ steps:
     with:
       name: guestbook-template
       path: guestbook.zip
-```
