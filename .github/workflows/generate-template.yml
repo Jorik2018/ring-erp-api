@@ -1,0 +1,36 @@
+name: Generate Leiningen Template
+
+on:
+workflow_dispatch:
+
+jobs:
+generate:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Install Leiningen
+    run: |
+      wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+      chmod +x lein
+      sudo mv lein /usr/local/bin/lein
+
+  - name: Generate Luminus project
+    run: |
+      lein new luminus guestbook +h2 +immutant
+
+  - name: List project structure
+    run: |
+      echo "=== Project Structure ==="
+      tree guestbook || ls -R guestbook
+
+  - name: Compress project
+    run: |
+      zip -r guestbook.zip guestbook
+
+  - name: Upload artifact
+    uses: actions/upload-artifact@v4
+    with:
+      name: guestbook-template
+      path: guestbook.zip
+```
